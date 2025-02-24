@@ -5,7 +5,7 @@
   <groupId>org.acme</groupId>
   <artifactId>code-with-quarkus-full</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <properties>
+ <properties>
     <compiler-plugin.version>3.10.1</compiler-plugin.version>
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,7 +22,10 @@
     <kogito.bom.version>9.1.1-ibm-0003</kogito.bom.version>
 
     <bamoe.techpreview.bom.artifact-id>bamoe-techpreview-bom</bamoe.techpreview.bom.artifact-id>
-  </properties>
+
+    
+  </properties> 
+   
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -49,6 +52,11 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+  <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.34</version>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
@@ -137,6 +145,21 @@
   </dependencies>
   <build>
     <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${compiler.version}</version>
+        <configuration>
+          <release>${maven.compiler.release}</release>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.34</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
