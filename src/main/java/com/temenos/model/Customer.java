@@ -12,9 +12,10 @@ public class Customer {
 
     private String name;
     private String lastName;
-    private String CustomerID;
+    private String customerID;
     private String phone;
     private String email;
+    private Pack pack;
 
 }
    

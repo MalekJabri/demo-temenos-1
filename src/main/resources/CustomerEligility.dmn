@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="https://kie.org/dmn/extensions/1.0" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://kie.org/dmn/_6FEAFF50-8C74-4087-96F7-EE2290552E06" id="CustomerEligibility" name="Eligibility">
+  <itemDefinition id="_3C60A930-3D2E-42C1-B3B7-1892CBA1ED89" name="Request" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+    <itemComponent id="_3557F5CD-D355-495D-8AED-6380FD6B7B1C" name="title" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_1A63223D-F2AE-4C1B-B558-004F6ADFEC6D" name="description" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_5C53FCEC-8A1C-4A48-89DB-1E9AA76CED82" name="amount" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>number</typeRef>
+    </itemComponent>
+  </itemDefinition>
+  <itemDefinition id="_146E7CB1-945D-4A29-B5E4-7458AD9DD570" name="Pack" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+    <description>Pack</description>
+    <typeRef>string</typeRef>
+    <typeConstraint id="_4213CEA9-C4F4-4F59-B09D-E5934093CA0E" kie:constraintType="enumeration">
+      <text>&quot;bronze&quot;, &quot;silver&quot;, &quot;gold&quot;</text>
+    </typeConstraint>
+  </itemDefinition>
+  <itemDefinition id="_4209DCCB-1D51-432D-83A7-02AA2DB75C13" name="Customer" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+    <itemComponent id="_B3ABFB03-81C1-4E4F-894C-5C129B80044C" name="customerID" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_9C14B84A-7C7A-4BCE-BCE8-A515FB3A36E2" name="name" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_13CD4034-E155-4421-B47F-39FFF3AF4B9E" name="email" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_805AE650-5AB9-4820-987C-8666F44E82EE" name="pack" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>Pack</typeRef>
+    </itemComponent>
+    <itemComponent id="_88D4477B-A94C-4150-ADF9-2566948F46F3" name="lastName" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_075FCB5C-57D7-484F-9DA9-C2EB77FBD262" name="phone" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+  </itemDefinition>
+  <inputData name="customer" id="_750BA175-61AD-44C5-80F5-EAD1DB667C61">
+    <variable name="customer" id="_E9F08F8D-3B74-4015-A730-4BF467677D03" typeRef="Customer" />
+  </inputData>
+  <decision name="isEligible" id="_6689558E-FA27-4D48-9A6B-860D327D2B57">
+    <description>Return eligibility based on the rules</description>
+    <variable id="_647487C8-5252-4DAE-9913-CFCEAFCFBA83" typeRef="boolean" name="isEligible" />
+    <informationRequirement id="_48FE6FE4-B405-4E7B-AC85-515E97E9B837">
+      <requiredInput href="#_750BA175-61AD-44C5-80F5-EAD1DB667C61" />
+    </informationRequirement>
+    <informationRequirement id="_37FCE91D-38D7-42D2-B953-4E00FF82749C">
+      <requiredInput href="#_9CC4E92A-460D-4795-B40B-53E773578694" />
+    </informationRequirement>
+    <decisionTable id="_F3403E18-B26D-4939-8970-73DDC54A41D2" typeRef="boolean" hitPolicy="UNIQUE" label="isEligible">
+      <input id="_CA44E30A-465E-4904-8F7F-E4B10373E64E">
+        <inputExpression id="_336EE0AA-DA4D-4019-A263-FF06C6472F6D" typeRef="Pack">
+          <text>customer.pack</text>
+        </inputExpression>
+      </input>
+      <input id="_C111C0BE-61F7-4980-9B15-2548278103A6">
+        <inputExpression id="_67475BB4-8C60-4DDE-84D1-80932E299708" typeRef="number">
+          <text>request.amount</text>
+        </inputExpression>
+      </input>
+      <output id="_85AFF607-264E-47C6-B484-A162FD808A82" name="Output-1" />
+      <annotation name="Annotations" />
+      <rule id="_832F3D67-9D64-4C6A-820C-B6E8983EF88E">
+        <inputEntry id="_097BA4BA-ABB2-4093-945B-06B5FAF608A9">
+          <text>&quot;gold&quot;</text>
+        </inputEntry>
+        <inputEntry id="_9A8137DB-2D38-472C-8EA1-49A7530F4DDB">
+          <text>&gt;= 0</text>
+        </inputEntry>
+        <outputEntry id="_B4AF4DB1-09CA-4371-8B0E-74F7AE0A0301">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// All time approved</text>
+        </annotationEntry>
+      </rule>
+      <rule id="_6B5B1453-C4B4-4671-8EEC-C3F5489AF45C">
+        <inputEntry id="_EB720014-0241-4268-95C0-892FDA7AFE3A">
+          <text>&quot;silver&quot;</text>
+        </inputEntry>
+        <inputEntry id="_714BB5FB-A021-4FF7-8E8D-CFAB1D1B8E84">
+          <text>&lt; 1000</text>
+        </inputEntry>
+        <outputEntry id="_63E86C3A-C9EE-4F98-A881-006F64DCE7A2">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// Reject if below 1000</text>
+        </annotationEntry>
+      </rule>
+      <rule id="_8341BC03-8CB8-48C7-A21A-C84C1632D8A1">
+        <inputEntry id="_58B0E797-A9A2-40D9-AFF1-3067FCB351BC">
+          <text>&quot;silver&quot;</text>
+        </inputEntry>
+        <inputEntry id="_029C3956-CE85-418E-AA27-D3BD0D9DD078">
+          <text>&gt;= 1000</text>
+        </inputEntry>
+        <outputEntry id="_FBBF768D-918B-44C8-8786-AFCE6A553C45">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// Approve if above or equal 1000</text>
+        </annotationEntry>
+      </rule>
+      <rule id="_C9E1A1D0-68F4-4643-BEBC-DBA1EBE99634">
+        <inputEntry id="_17D3FF9D-71DE-46C4-ADDD-3D0C18C67C51">
+          <text>&quot;bronze&quot;</text>
+        </inputEntry>
+        <inputEntry id="_FEB23E72-38EE-4198-BD03-525C26B8B94D">
+          <text>&lt; 2000</text>
+        </inputEntry>
+        <outputEntry id="_4BDB4B02-2C79-49DC-8DD9-3AF78EE8D630">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// Reject if below 2000</text>
+        </annotationEntry>
+      </rule>
+      <rule id="_2F0FB3CF-C04D-428F-8E6A-491282895794">
+        <inputEntry id="_9FA2EBBF-B333-4FF2-8BEE-50C9BFD8EDCC">
+          <text>&quot;bronze&quot;</text>
+        </inputEntry>
+        <inputEntry id="_03288F0B-FA25-43BF-A5C6-190D49578519">
+          <text>&gt;= 2000</text>
+        </inputEntry>
+        <outputEntry id="_303186C2-5D38-40A8-8034-1F1A092A5012">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// approve if above 2000</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData name="request" id="_9CC4E92A-460D-4795-B40B-53E773578694">
+    <variable name="request" id="_6FC05D70-A5F0-4531-8CA7-1E353C50331B" typeRef="Request" />
+  </inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_7563989A-61D4-4D30-8F5F-6D24DEF884CD" name="Default DRD" useAlternativeInputDataShape="false">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_DD744C5D-7ECA-4FD1-86A3-9EDB1AEBAB62">
+            <kie:width>60</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>240</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_F3403E18-B26D-4939-8970-73DDC54A41D2">
+            <kie:width>60</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>240</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="_7E293CE9-17F8-4562-8209-B55C2CADBEA4" dmnElementRef="_750BA175-61AD-44C5-80F5-EAD1DB667C61" isCollapsed="false" isListedInputData="false">
+        <dmndi:DMNStyle id="_EEE40EC1-55FF-4C1E-BC48-D20AA9D0D3F5">
+          <dmndi:FillColor blue="65" green="210" red="67" />
+        </dmndi:DMNStyle>
+        <dc:Bounds x="332" y="292" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_01241A84-A5E1-4E50-8842-D37BA042DC7C" dmnElementRef="_6689558E-FA27-4D48-9A6B-860D327D2B57" isCollapsed="false" isListedInputData="false">
+        <dmndi:DMNStyle id="_562E52E8-EBFD-4B12-8B69-DDB3435FF6AC">
+          <dmndi:FillColor blue="236" green="153" red="101" />
+        </dmndi:DMNStyle>
+        <dc:Bounds x="112" y="112" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_94E8D7DA-7B6A-4EFC-9154-F2663EE22826" dmnElementRef="_9CC4E92A-460D-4795-B40B-53E773578694" isCollapsed="false" isListedInputData="false">
+        <dmndi:DMNStyle id="_6F8FD1D9-7A22-43E7-A3B5-5398F619FAC5">
+          <dmndi:FillColor blue="62" green="218" red="117" />
+        </dmndi:DMNStyle>
+        <dc:Bounds x="112" y="292" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_0C2135E8-2196-487F-8603-33C9C14ADFA3" dmnElementRef="_48FE6FE4-B405-4E7B-AC85-515E97E9B837" sourceElement="_7E293CE9-17F8-4562-8209-B55C2CADBEA4" targetElement="_01241A84-A5E1-4E50-8842-D37BA042DC7C">
+        <di:waypoint x="412" y="292" />
+        <di:waypoint x="192" y="192" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="_C48B9AC6-219D-4675-BEEB-972B8439D347" dmnElementRef="_37FCE91D-38D7-42D2-B953-4E00FF82749C" sourceElement="_94E8D7DA-7B6A-4EFC-9154-F2663EE22826" targetElement="_01241A84-A5E1-4E50-8842-D37BA042DC7C">
+        <di:waypoint x="192" y="292" />
+        <di:waypoint x="192" y="192" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
