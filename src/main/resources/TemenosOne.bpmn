@@ -371,7 +371,7 @@
         <dc:Bounds height="102" width="154" x="1000" y="480" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__D5754B8E-C577-4D5D-B630-754C3F91EC57" bpmnElement="_D5754B8E-C577-4D5D-B630-754C3F91EC57">
-        <dc:Bounds height="56.00000000000003" width="56" x="1360" y="260" />
+        <dc:Bounds height="56.00000000000003" width="56" x="1480" y="260" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BB5D7D9E-0B07-4514-86A5-578595362B88" bpmnElement="_B4FDAD0B-8207-4FA6-AEF3-311202170020">
         <dc:Bounds x="560" y="480" width="180" height="100" />
@@ -400,7 +400,7 @@
       <bpmndi:BPMNEdge id="edge_shape__2C0584DF-7277-4241-A030-CE2AAFD93685_to_shape__D5754B8E-C577-4D5D-B630-754C3F91EC57" bpmnElement="_1D19D73A-F90F-4A5F-AD26-E162ABAB5E43">
         <di:waypoint x="1248" y="528" />
         <di:waypoint x="1248" y="285.146133575873" />
-        <di:waypoint x="1360" y="288" />
+        <di:waypoint x="1480" y="288" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="_16E273AE-3AB0-432F-BB8E-5BA0D35904D2-AUTO-TARGET" bpmnElement="_A0CAEF15-9ECA-469E-88A9-315611083383" sourceElement="_5BAE7D15-C20B-4471-BF3C-7A294E49F572" targetElement="_5CD19D50-20E4-4504-8612-6391440226F5">
         <di:waypoint x="630" y="530" />
