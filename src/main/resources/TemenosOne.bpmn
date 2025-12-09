@@ -153,8 +153,7 @@
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_D9D72135-E680-4DDB-A3E5-83CDFEF97B38" sourceRef="_2542DD6F-E5B9-49AF-8491-6391E1AD2B8C" targetRef="_2E146881-C8DB-4696-81B9-7179524FA6E4" />
     <bpmn2:sequenceFlow id="_86B07466-409F-4833-9346-818D72569BC1" sourceRef="_B9240C81-4029-4F03-B9D3-F1788EB92F7C" targetRef="_8FCD120D-1343-4B41-8F6D-F152E58BEDA7" />
-    <bpmn2:sequenceFlow id="_EB50D019-ADF7-44BD-A3A8-3431CC53CA01" sourceRef="_8FCD120D-1343-4B41-8F6D-F152E58BEDA7" targetRef="_B4FDAD0B-8207-4FA6-AEF3-311202170020" />
-    <bpmn2:sequenceFlow id="_433279A4-0B7D-4E18-B446-C9358CAE4715" sourceRef="_B4FDAD0B-8207-4FA6-AEF3-311202170020" targetRef="_7BB0AD0B-C8EE-4CC1-AD55-98EAF4E14860" />
+    <bpmn2:sequenceFlow id="_EDAD0E0D-D2A9-4FD6-ABD7-62D3A0BEBEAC" sourceRef="_8FCD120D-1343-4B41-8F6D-F152E58BEDA7" targetRef="_7BB0AD0B-C8EE-4CC1-AD55-98EAF4E14860" />
     <bpmn2:serviceTask id="_7BB0AD0B-C8EE-4CC1-AD55-98EAF4E14860" drools:serviceimplementation="Java" drools:serviceinterface="com.temenos.service.IntegrationMail" drools:serviceoperation="sendNotifcationtest" name="Task" implementation="Java" operationRef="_7BB0AD0B-C8EE-4CC1-AD55-98EAF4E14860_ServiceOperation">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -164,6 +163,7 @@
       <bpmn2:incoming>_8720F5B7-9B9F-4EE5-9416-A6D27D21C6FB</bpmn2:incoming>
       <bpmn2:incoming>_D3A70C76-0709-4258-B0C6-395628C1C888</bpmn2:incoming>
       <bpmn2:incoming>_433279A4-0B7D-4E18-B446-C9358CAE4715</bpmn2:incoming>
+      <bpmn2:incoming>_EDAD0E0D-D2A9-4FD6-ABD7-62D3A0BEBEAC</bpmn2:incoming>
       <bpmn2:outgoing>_0CFB3714-46E0-4CA9-AD4F-A84DB655DEDD</bpmn2:outgoing>
       <bpmn2:ioSpecification>
         <bpmn2:dataInput id="_7BB0AD0B-C8EE-4CC1-AD55-98EAF4E14860_customerInputX" drools:dtype="com.temenos.model.Customer" itemSubjectRef="__7BB0AD0B-C8EE-4CC1-AD55-98EAF4E14860_customerInputXItem" name="customer" />
@@ -179,73 +179,6 @@
     <bpmn2:startEvent id="_B9240C81-4029-4F03-B9D3-F1788EB92F7C">
       <bpmn2:outgoing>_86B07466-409F-4833-9346-818D72569BC1</bpmn2:outgoing>
     </bpmn2:startEvent>
-    <bpmn2:task id="_B4FDAD0B-8207-4FA6-AEF3-311202170020" name="generate email" drools:taskName="Gen AI Task">
-      <bpmn2:incoming>_EB50D019-ADF7-44BD-A3A8-3431CC53CA01</bpmn2:incoming>
-      <bpmn2:outgoing>_433279A4-0B7D-4E18-B446-C9358CAE4715</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_C792BDAF-0AB4-4EC6-8FEA-F9FC2DC0657F">
-        <bpmn2:dataInput id="_35178AE8-17FD-4EEC-B7E2-5426039DC3C7" name="genAiProvider" drools:dtype="String" itemSubjectRef="_5EA3C1F2-300B-40B0-BD26-BDC71A9066B1" />
-        <bpmn2:dataInput id="_490BE990-B4FE-417B-AD7E-D250CE028682" name="genAiModel" drools:dtype="String" itemSubjectRef="_5EA3C1F2-300B-40B0-BD26-BDC71A9066B1" />
-        <bpmn2:dataInput id="_BD82D0A6-09CC-4FD6-93E7-31ABAAC1B873" name="genAiTemperature" drools:dtype="Float" />
-        <bpmn2:dataInput id="_366844CA-E972-4B81-A804-2A926B8BBDAF" name="genAiMaxTokens" drools:dtype="Integer" />
-        <bpmn2:dataInput id="_78918B82-ED85-40D7-81C1-740357F77253" name="genAiPrompt" drools:dtype="String" itemSubjectRef="_5EA3C1F2-300B-40B0-BD26-BDC71A9066B1" />
-        <bpmn2:dataInput id="_C8DC01DA-D110-427F-8215-610EB14E080F" name="CustomerName" drools:dtype="String" itemSubjectRef="_5EA3C1F2-300B-40B0-BD26-BDC71A9066B1" />
-        <bpmn2:dataOutput name="genAiOutput" id="_90EB7232-E4CA-4E9D-9762-429272610AF5" drools:dtype="String" itemSubjectRef="_5EA3C1F2-300B-40B0-BD26-BDC71A9066B1" />
-        <bpmn2:inputSet id="_130224C1-489C-40B3-88CA-2C5262D41CFA">
-          <bpmn2:dataInputRefs>_35178AE8-17FD-4EEC-B7E2-5426039DC3C7</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>_490BE990-B4FE-417B-AD7E-D250CE028682</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>_BD82D0A6-09CC-4FD6-93E7-31ABAAC1B873</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>_366844CA-E972-4B81-A804-2A926B8BBDAF</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>_78918B82-ED85-40D7-81C1-740357F77253</bpmn2:dataInputRefs>
-          <bpmn2:dataInputRefs>_C8DC01DA-D110-427F-8215-610EB14E080F</bpmn2:dataInputRefs>
-        </bpmn2:inputSet>
-        <bpmn2:outputSet id="_AC6B6C8F-52C1-4358-A243-8ED8F974EADA">
-          <bpmn2:dataOutputRefs>_90EB7232-E4CA-4E9D-9762-429272610AF5</bpmn2:dataOutputRefs>
-        </bpmn2:outputSet>
-      </bpmn2:ioSpecification>
-      <bpmn2:dataInputAssociation id="_415181D3-1CB0-4C57-8C8F-1F973FC448B9">
-        <bpmn2:targetRef>_35178AE8-17FD-4EEC-B7E2-5426039DC3C7</bpmn2:targetRef>
-        <bpmn2:assignment id="_23D763A6-7FD6-4824-B9D1-F69A1060E15E">
-          <bpmn2:from id="_2BE11602-1B57-4B9C-8548-C2FC63F09EEA" xsi:type="tFormalExpression">watsonx</bpmn2:from>
-          <bpmn2:to id="_B0BB2390-81F3-415E-A787-8EA3CD9009F3">_35178AE8-17FD-4EEC-B7E2-5426039DC3C7</bpmn2:to>
-        </bpmn2:assignment>
-      </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_2619D8EE-F30D-499D-BC07-DD5DC07181CB">
-        <bpmn2:targetRef>_490BE990-B4FE-417B-AD7E-D250CE028682</bpmn2:targetRef>
-        <bpmn2:assignment id="_9D7A0E17-33CB-4E18-A52A-76AE57DA5EE3">
-          <bpmn2:from id="_221FA10E-7592-48C7-A8AE-DB00FBF3DC31" xsi:type="tFormalExpression">ibm/granite-3-8b-instruct</bpmn2:from>
-          <bpmn2:to id="_1B96F16A-3BAF-490C-B752-F22033F4E10E">_490BE990-B4FE-417B-AD7E-D250CE028682</bpmn2:to>
-        </bpmn2:assignment>
-      </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_C262561B-63A0-43DF-9AA1-0E01E1B2FD2B">
-        <bpmn2:targetRef>_BD82D0A6-09CC-4FD6-93E7-31ABAAC1B873</bpmn2:targetRef>
-        <bpmn2:assignment id="_F48BCA6F-662F-4F08-BE06-888D9019905C">
-          <bpmn2:from id="_7F79469C-9A03-496F-BFF2-087B098503AF" xsi:type="tFormalExpression">1</bpmn2:from>
-          <bpmn2:to id="_7651A461-B352-446B-8C9E-EC6EB387C634">_BD82D0A6-09CC-4FD6-93E7-31ABAAC1B873</bpmn2:to>
-        </bpmn2:assignment>
-      </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_D0A2F913-8A12-408E-9F6D-AF3F57E7B2E2">
-        <bpmn2:targetRef>_366844CA-E972-4B81-A804-2A926B8BBDAF</bpmn2:targetRef>
-        <bpmn2:assignment id="_57794312-CF74-4814-8995-87B5FC715778">
-          <bpmn2:from id="_1AE82FF1-AF28-45BB-93BE-1602EDE776E7" xsi:type="tFormalExpression">1200</bpmn2:from>
-          <bpmn2:to id="_F3DFE3B6-9CF1-4C42-8A44-DEC297ADEED3">_366844CA-E972-4B81-A804-2A926B8BBDAF</bpmn2:to>
-        </bpmn2:assignment>
-      </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_C437BF4F-7D65-4E98-AED1-72A2C5FE20BD">
-        <bpmn2:targetRef>_78918B82-ED85-40D7-81C1-740357F77253</bpmn2:targetRef>
-        <bpmn2:assignment id="_84171F9F-4944-4EC1-B9A6-D01F94951D6E">
-          <bpmn2:from id="_D3594799-B97C-4742-B486-9DA48C4B50CB" xsi:type="tFormalExpression">Generate Eamil to inform the receipt of the loan request the customer is {{CustomerName}} </bpmn2:from>
-          <bpmn2:to id="_967E68D8-EDF9-4D9C-888F-1E23371A2D42">_78918B82-ED85-40D7-81C1-740357F77253</bpmn2:to>
-        </bpmn2:assignment>
-      </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_E3B84DCD-16EF-40F0-BD04-0CE23E409B51">
-        <bpmn2:sourceRef>customer</bpmn2:sourceRef>
-        <bpmn2:targetRef>_C8DC01DA-D110-427F-8215-610EB14E080F</bpmn2:targetRef>
-      </bpmn2:dataInputAssociation>
-      <bpmn2:dataOutputAssociation id="_921F8A5E-FFD8-4D62-8830-3599E500C06C">
-        <bpmn2:sourceRef>_90EB7232-E4CA-4E9D-9762-429272610AF5</bpmn2:sourceRef>
-        <bpmn2:targetRef></bpmn2:targetRef>
-      </bpmn2:dataOutputAssociation>
-    </bpmn2:task>
     <bpmn2:userTask id="_2542DD6F-E5B9-49AF-8491-6391E1AD2B8C" name="Approval">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -304,6 +237,7 @@
       <bpmn2:outgoing>_8720F5B7-9B9F-4EE5-9416-A6D27D21C6FB</bpmn2:outgoing>
       <bpmn2:outgoing>_0308810C-1E04-4067-AFE6-8FDF4F59899D</bpmn2:outgoing>
       <bpmn2:outgoing>_EB50D019-ADF7-44BD-A3A8-3431CC53CA01</bpmn2:outgoing>
+      <bpmn2:outgoing>_EDAD0E0D-D2A9-4FD6-ABD7-62D3A0BEBEAC</bpmn2:outgoing>
       <bpmn2:ioSpecification>
         <bpmn2:dataInput id="_8FCD120D-1343-4B41-8F6D-F152E58BEDA7_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__8FCD120D-1343-4B41-8F6D-F152E58BEDA7_TaskNameInputXItem" name="TaskName" />
         <bpmn2:dataInput id="_8FCD120D-1343-4B41-8F6D-F152E58BEDA7_customerInputX" drools:dtype="com.temenos.model.Customer" itemSubjectRef="__8FCD120D-1343-4B41-8F6D-F152E58BEDA7_customerInputXItem" name="customer" />
@@ -360,7 +294,7 @@
         <dc:Bounds height="56" width="56" x="227" y="493" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__8FCD120D-1343-4B41-8F6D-F152E58BEDA7" bpmnElement="_8FCD120D-1343-4B41-8F6D-F152E58BEDA7">
-        <dc:Bounds height="102" width="154" x="340" y="480" />
+        <dc:Bounds height="102" width="154" x="480" y="480" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__2E146881-C8DB-4696-81B9-7179524FA6E4" bpmnElement="_2E146881-C8DB-4696-81B9-7179524FA6E4">
         <dc:Bounds height="56" width="56" x="1540" y="500" />
@@ -380,12 +314,9 @@
       <bpmndi:BPMNShape id="shape__D5754B8E-C577-4D5D-B630-754C3F91EC57" bpmnElement="_D5754B8E-C577-4D5D-B630-754C3F91EC57">
         <dc:Bounds height="56.00000000000003" width="56" x="1480" y="260" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BB5D7D9E-0B07-4514-86A5-578595362B88" bpmnElement="_B4FDAD0B-8207-4FA6-AEF3-311202170020">
-        <dc:Bounds x="560" y="480" width="180" height="100" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="edge_shape__B9240C81-4029-4F03-B9D3-F1788EB92F7C_to_shape__8FCD120D-1343-4B41-8F6D-F152E58BEDA7" bpmnElement="_86B07466-409F-4833-9346-818D72569BC1">
         <di:waypoint x="255" y="521" />
-        <di:waypoint x="340" y="531" />
+        <di:waypoint x="480" y="531" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__2542DD6F-E5B9-49AF-8491-6391E1AD2B8C_to_shape__2E146881-C8DB-4696-81B9-7179524FA6E4" bpmnElement="_D9D72135-E680-4DDB-A3E5-83CDFEF97B38">
         <di:waypoint x="1397" y="531" />
@@ -425,12 +356,8 @@
         <di:waypoint x="417" y="531" />
         <di:waypoint x="650" y="530" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="_1491ED98-3EC3-4118-A697-EDA00C30F748-AUTO-SOURCE-AUTO-TARGET" bpmnElement="_EB50D019-ADF7-44BD-A3A8-3431CC53CA01" sourceElement="shape__8FCD120D-1343-4B41-8F6D-F152E58BEDA7" targetElement="_BB5D7D9E-0B07-4514-86A5-578595362B88">
-        <di:waypoint x="417" y="531" />
-        <di:waypoint x="650" y="530" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="_6C68EC43-1B05-4DEE-98B8-12DA7B6FE053" bpmnElement="_433279A4-0B7D-4E18-B446-C9358CAE4715" sourceElement="_BB5D7D9E-0B07-4514-86A5-578595362B88" targetElement="shape__7BB0AD0B-C8EE-4CC1-AD55-98EAF4E14860">
-        <di:waypoint x="650" y="530" />
+      <bpmndi:BPMNEdge id="_B474EEA5-573A-471F-BD10-27D059C5CA99" bpmnElement="_EDAD0E0D-D2A9-4FD6-ABD7-62D3A0BEBEAC" sourceElement="shape__8FCD120D-1343-4B41-8F6D-F152E58BEDA7" targetElement="shape__7BB0AD0B-C8EE-4CC1-AD55-98EAF4E14860">
+        <di:waypoint x="557" y="531" />
         <di:waypoint x="857" y="531" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
